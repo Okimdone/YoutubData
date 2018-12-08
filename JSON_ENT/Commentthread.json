@@ -1,18 +1,18 @@
 {
-  "kind": "youtube#commentThread",
-  "etag": etag,
-  "id": string,
-  "snippet": {
-    "channelId": string,
-    "videoId": string,
-    "topLevelComment": comments Resource,
-    "canReply": boolean,
-    "totalReplyCount": unsigned integer,
-    "isPublic": boolean
-  },
-  "replies": {
-    "comments": [
-      comments Resource
-    ]
+    "kind": "youtube#commentThread",
+    "etag": etag,
+    "id": string,
+    "snippet": {
+      "channelId": string,
+      "videoId": string,
+      "topLevelComment": comments Resource,
+      "canReply": boolean,
+      "totalReplyCount": unsigned integer,
+      "isPublic": boolean
+    },
+    "replies": {
+      "comments": [
+        comments Resource
+      ]
+    }
   }
-}
