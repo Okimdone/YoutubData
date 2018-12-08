@@ -1,4 +1,3 @@
-
 "Comments_kind", "youtube#comment"
 "Comments_etag", "etag"
 "Comments_id", "string"
@@ -17,4 +16,3 @@
 "Comments_snippet_moderationStatus", "string"
 "Comments_snippet_publishedAt", "datetime"
 "Comments_snippet_updatedAt", "datetime"
-

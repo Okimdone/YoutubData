@@ -1,0 +1,5 @@
+"query_queryId_grpSearchId", "unsigned long"
+"query_queryId_keyWordId", "unsigned long"
+"query_queryId_word", "string"
+"query_SearchFromDate", "date"
+"query_SearchtoDate", "date"
