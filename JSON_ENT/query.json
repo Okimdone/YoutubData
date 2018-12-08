@@ -1,0 +1,9 @@
+{
+  "queryId":{ 
+    "grpSearchId": unsigned long,
+    "keyWordId": unsigned long,
+    "word": string
+  },
+  "SearchFromDate": date,
+  "SearchtoDate": date
+}

@@ -1,0 +1,51 @@
+{
+    "kind": "youtube#video",
+    "etag": etag,
+    "id": string,
+    "snippet": {
+        "publishedAt": datetime,
+        "channelId": string,
+        "title": string,
+        "description": string,
+        "categoryId": string,
+        "defaultLanguage": string,
+        "localized": {
+            "title": string,
+            "description": string
+        },
+        "defaultAudioLanguage": string
+    },
+    "status": {
+        "uploadStatus": string,
+        "failureReason": string,
+        "rejectionReason": string,
+        "privacyStatus": string,
+        "publishAt": datetime,
+        "license": string,
+        "embeddable": boolean,
+        "publicStatsViewable": boolean
+    },
+    "statistics": {
+        "viewCount": unsigned long,
+        "likeCount": unsigned long,
+        "dislikeCount": unsigned long,
+        "favoriteCount": unsigned long,
+        "commentCount": unsigned long
+    },
+    "topicDetails": {
+        "topicIds": [
+            string
+        ]
+    },
+    "fileDetails": {
+        "durationMs": unsigned long,
+        "bitrateBps": unsigned long,
+        "creationTime": string
+    },
+    "localizations": {
+        (key): {
+            "title": string,
+            "description": string
+        }
+    }
+  } 

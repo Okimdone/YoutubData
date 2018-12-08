@@ -1,0 +1,70 @@
+{
+    "kind": "youtube#channel",
+    "etag": etag,
+    "id": string,
+    "snippet": {
+      "title": string,
+      "description": string,
+      "customUrl": string,
+      "publishedAt": datetime,
+      "defaultLanguage": string,
+      "localized": {
+        "title": string,
+        "description": string
+      },
+      "country": string
+    },
+    "contentDetails": {
+      "relatedPlaylists": {
+        "likes": string,
+        "favorites": string,
+        "uploads": string,
+        "watchHistory": string,
+        "watchLater": string
+      }
+    },
+    "statistics": {
+      "viewCount": unsigned long,
+      "commentCount": unsigned long,
+      "subscriberCount": unsigned long,
+      "hiddenSubscriberCount": boolean,
+      "videoCount": unsigned long
+    },
+    "topicDetails": {
+      "topicIds": [
+        string
+      ],
+      "topicCategories": [
+        string
+      ]
+    },
+    "status": {
+      "privacyStatus": string,
+      "isLinked": boolean,
+      "longUploadsStatus": string
+    },
+    "brandingSettings": {
+      "channel": {
+        "title": string,
+        "description": string,
+        "keywords": string,
+        "moderateComments": boolean,
+        "showRelatedChannels": boolean,
+        "showBrowseView": boolean,
+        "featuredChannelsTitle": string,
+        "unsubscribedTrailer": string,
+        "profileColor": string,
+        "defaultLanguage": string,
+        "country": string
+      },
+    "contentOwnerDetails": {
+      "contentOwner": string,
+      "timeLinked": datetime
+    },
+    "localizations": {
+      (key): {
+        "title": string,
+        "description": string
+      }
+    }
+  }
