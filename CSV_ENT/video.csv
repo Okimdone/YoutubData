@@ -1,4 +1,4 @@
-"video_kind", "youtube#video""
+"video_kind", "youtube#video"
 "video_etag", "etag"
 "video_id", "string"
 "video_snippet_publishedAt", "datetime"
@@ -23,14 +23,9 @@
 "video_statistics_dislikeCount", "unsigned long"
 "video_statistics_favoriteCount", "unsigned long"
 "video_statistics_commentCount", "unsigned long"
-video_topicDetails_topicIds": [string]
+"video_topicDetails_topicIds", "[string]"
 "video_fileDetails_durationMs", "unsigned long"
 "video_fileDetails_bitrateBps", "unsigned long"
 "video_fileDetails_creationTime", "string"
-
-video_localizations": {
-    (key): {
-        "title": string,
-        "description": string
-    }
-}
+"video_localizations_key_title", "string",
+"video_localizations_key_description", "string"
