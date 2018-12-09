@@ -1,0 +1,6 @@
+"Nom de la donnée",         "Format",       "Longueur", "Type"
+"query_queryId_grpQueryId", "NUMERIQUE",    "10",       "E"
+"query_queryId_inGroupId",  "NUMERIQUE",    "10",       "E"
+"query_queryId_word",       "AN",           "16",       "E"
+"query_SearchFromDate",     "DATE",             ,       "E"
+"query_SearchtoDate",       "DATE",             ,       "E"
