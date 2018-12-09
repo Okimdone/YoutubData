@@ -5,6 +5,6 @@
 "commentthread_snippet_videoId", "string"
 "commentthread_snippet_topLevelComment", "comments Resource"
 "commentthread_snippet_canReply", "boolean",
-"commentthread_snippet_totalReplyCount", "unsigned integer",
+"commentthread_snippet_totalReplyCount", "unsigned integer"
 "commentthread_snippet_isPublic", "boolean"
 "commentthread_replies_comments", "[comments Resource]"
