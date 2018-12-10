@@ -1,110 +1,134 @@
-"Nom de la donnée",         "Format",       "Longueur", "Type"
-"query_queryId_grpQueryId", "NUMERIQUE",    "10",       "E"
-"query_queryId_inGroupId",  "NUMERIQUE",    "10",       "E"
-"query_queryId_word",       "AN",           "16",       "E"
-"query_SearchFromDate",     "DATE",             ,       "E"
-"query_SearchtoDate",       "DATE",             ,       "E"
-"","","",""
-"video_kind",               "youtube#video",    "14",       "E"
-"video_etag",               "etag",             "41",       "E"
-"video_id",                 "AN",               "30",       "E"
-"video_snippet_publishedAt","date",                 ,       "E"
-"video_snippet_channelId",  "AN",               "30",       "E"
-"video_snippet_title", "AN",                    "100",      "E"
-"video_snippet_description", "AN",              "300",      "E"
-"video_snippet_categoryId", "AN",               "20",       "E"
-"video_snippet_defaultLanguage", "AN",          "20",       "E"
-"video_snippet_localized_title", "AN",          "50",       "E"
-"video_snippet_localized_description", "AN",    "300",      "E"
-"video_snippet_defaultAudioLanguage", "AN",     "20",       "E"
-"video_status_uploadStatus", "AN",              "20",       "E"
-"video_status_failureReason", "AN",             "30",       "E"
-"video_status_rejectionReason", "AN",           "30",       "E"
-"video_status_privacyStatus", "AN",             "30",       "E"
-"video_status_publishAt", "date",                   ,       "E"
-"video_status_license", "AN",                   "30",       "E"       
-"video_status_embeddable", "boolean",               ,       "E"
-"video_status_publicStatsViewable", "boolean",      ,       "E"
-"video_statistics_viewCount", "NUMERIQUE",      "12",       "E"
-"video_statistics_likeCount", "NUMERIQUE",      "12",       "E"
-"video_statistics_dislikeCount", "NUMERIQUE",   "12",       "E"
-"video_statistics_favoriteCount", "NUMERIQUE",  "12",       "E"
-"video_statistics_commentCount", "NUMERIQUE",   "12",       "E"
-"video_topicDetails_topicIds", "[AN]",          "30",       "E"
-"video_fileDetails_durationMs", "NUMERIQUE",    "12",       "E"
-"video_fileDetails_bitrateBps", "NUMERIQUE",    "12",       "E"
-"video_fileDetails_creationTime", "AN",         "25",       "E"
-"video_localizations_key_title", "AN",          "30",       "E"
-"video_localizations_key_description", "AN",    "160",      "E"
-"","","",""
-"commentthread_kind", "youtube#commentThread",          "22",       "E"
-"commentthread_etag", "etag",                           "41",       "E"
-"commentthread_id", "AN",                               "30",       "E"
-"commentthread_snippet_channelId", "AN",                "30",       "E"     
-"commentthread_snippet_videoId", "AN",                  "30",       "E"
-"commentthread_snippet_topLevelComment", "comments Resource",,      "E"
-"commentthread_snippet_canReply", "boolean",                ,       "E"
-"commentthread_snippet_totalReplyCount", "NUMERIQUE",   "12",       "E"
-"commentthread_snippet_isPublic", "boolean",                ,       "E"
-"commentthread_replies_comments", "[comments Resource]",    ,       "E"
-"","","",""
-"Comments_kind",            "youtube#comment",  "16",       "E"
-"Comments_etag",            "string",             "41",       "E"
-"Comments_id",              "AN",           "30",       "E"
-"Comments_snippet_authorDisplayName", "AN", "30",       "E"
-"Comments_snippet_authorProfileImageUrl", "AN","60",    "E"
-"Comments_snippet_authorChannelUrl", "AN",  "60",       "E"
-"Comments_authorChannelId_value", "AN",     "30",       "E"
-"Comments_snippet_channelId", "AN",         "30",       "E"
-"Comments_snippet_videoId", "AN",           "30",       "E"
-"Comments_snippet_textDisplay", "AN",       "30",       "E"
-"Comments_snippet_textOriginal", "AN",      "30",       "E"
-"Comments_snippet_parentId", "AN",          "30",       "E"
-"Comments_snippet_canRate", "boolean",          ,       "E"
-"Comments_snippet_viewerRating", "AN",      "20",       "E"
-"Comments_snippet_likeCount", "NUMERIQUE",  "12",       "E"
-"Comments_snippet_moderationStatus", "AN",  "25",       "E"
-"Comments_snippet_publishedAt", "date",         ,       "E"
-"Comments_snippet_updatedAt", "date",           ,       "E"
-"","","",""
-"channels_kind", "youtube#channel",     "15",       "E"
-"channels_channels_etag", "etag",       "41",       "E"
-"channels_id", "AN",                    "30",       "E"
-"channels_snippet_title", "AN",         "30",       "E"
-"channels_snippet_description", "AN",   "300",      "E"
-"channels_snippet_customUrl", "AN",     "40",       "E"
-"channels_snippet_publishedAt", "date",     ,       "E"
-"channels_snippet_defaultLanguage", "AN","10",      "E"
-"channels_snippet_localized_title", "AN","50",      "E"
-"channels_snippet_localized_description", "AN","300","E"
-"channels_snippet_country", "AN",       "29",       "E"
-"channels_contentDetails_relatedPlaylists_likes", "AN","12","E"
-"channels_contentDetails_relatedPlaylists_favorites", "AN","12","E"
-"channels_contentDetails_relatedPlaylists_uploads", "AN","12","E"
-"channels_contentDetails_relatedPlaylists_watchHistory", "AN","12","E"
-"channels_contentDetails_relatedPlaylists_watchLater", "AN","12","E"
-"channels_statistics_viewCount", "NUMERIQUE","12",  "E"
-"channels_statistics_commentCount", "NUMERIQUE","12","E"
-"channels_statistics_subscriberCount", "NUMERIQUE","12","E"
-"channels_statistics_hiddenSubscriberCount", "boolean","12","E"
-"channels_statistics_videoCount", "NUMERIQUE","12", "E"
-"channels_topicDetails_topicIds", "[AN]",   "20   ","E"
-"channels_topicDetails_topicCategories", "[AN]","20","E"
-"channels_status_privacyStatus", "AN",  "20",   "E"
-"channels_status_isLinked", "boolean",  "1",    "E"
-"channels_status_longUploadsStatus", "AN","20", "E"
-"channels_brandingSettings_channel_title", "AN","20", "E"
-"channels_brandingSettings_channel_description", "AN","180", "E"
-"channels_brandingSettings_channel_keywords", "AN","20", "E"
-"channels_brandingSettings_channel_moderateComments", "boolean","1","E"
-"channels_brandingSettings_channel_showRelatedChannels", "boolean","1","E"
-"channels_brandingSettings_channel_showBrowseView", "boolean","1","E"
-"channels_brandingSettings_channel_featuredChannelsTitle", "AN","30","E"
-"channels_brandingSettings_channel_unsubscribedTrailer", "AN","30","E"
-"channels_brandingSettings_channel_profileColor", "AN","15","E"
-"channels_brandingSettings_channel_defaultLanguage", "AN","25","E"
-"channels_brandingSettings_channel_country", "AN","30","E"
-"channels_brandingSettings_channels_contentOwnerDetails_contentOwner", "AN","30","E"
-"channels_brandingSettings_channels_contentOwnerDetails_timeLinked", "date",,"E"
-"channels_localizations_key_title", "AN","30","E"
-"channels_localizations_key_description", "AN","160","E"
+Nom de la donnée,Format,Longueur,Type,Description
+id_query,NUMERIQUE,10,E,"defines the id of a groupe of key words searched in the other of the ""id_mot"""
+id_mot,NUMERIQUE,10,E,"defines the order of the word searched in a group of a searched sentence ""query"""
+mot,AN,20,E,a text word delimited by spaces in a query 
+,,,,
+id_palge,,,,"id of a ""plage de date"""
+date_from,DATE,,E,date to search from
+date_to,DATE,,E,date to search to
+,,,,
+,,,,
+video_kind,youtube#video,14,E,Identifies the API resource's type. The value will be youtube#video
+video_etag,etag,41,E,The Etag of this resource
+video_id,AN,30,E,The ID that YouTube uses to uniquely identify the video
+,,,,
+video_snippet_publishedAt,date,,E,The date and time that the video was published. 
+video_snippet_channelId,AN,30,E,The ID that YouTube uses to uniquely identify the channel that the video was uploaded to.
+video_snippet_title,AN,100,E,The video's title
+video_snippet_description,AN,5000,E,The video's description
+video_snippet_categoryId,AN,20,E,The YouTube video category associated with the video
+video_snippet_defaultLanguage,AN,20,E,The language of the text in the video resource's snippet.title and snippet.description properties
+,,,,
+video_snippet_localized_title,AN,50,E,The localized video title
+video_snippet_localized_description,AN,300,E,The localized video description
+,,,,
+video_snippet_defaultAudioLanguage,AN,20,E,Specifies the language spoken in the video's default audio track
+,,,,
+video_status_uploadStatus,AN,20,E,"The status of the uploaded video.Valid values := (deleted, failed, processed, rejected, uploaded)"
+video_status_failureReason,AN,30,E,"This value explains why a video failed to upload. This property is only present if the uploadStatus property indicates that the upload failed. valid values :=(codec, conversion, emptyFile, invalidFile, tooSmallupload, Aborted)"
+video_status_rejectionReason,AN,30,E,"This value explains why YouTube rejected an uploaded video. This property is only present if the uploadStatus property indicates that the upload was rejected. Valid values:=(claim, copyright, duplicate, inappropriate, legal, length, termsOfUse, trademark, uploaderAccountClosed, uploaderAccountSuspended)"
+video_status_privacyStatus,AN,30,E,"The video's privacy status.Valid values := (private, public, unlisted)"
+video_status_publishAt,date,,E,The date and time when the video is scheduled to publish. It can be set only if the privacy status of the video is private
+video_status_license,AN,30,E,The video's license
+video_status_embeddable,boolean,,E,This value indicates whether the video can be embedded on another website
+video_status_publicStatsViewable,boolean,,E,"This value indicates whether the extended video statistics on the video's watch page are publicly viewable. By default, those statistics are viewable"
+,,,,
+video_statistics_viewCount,NUMERIQUE,12,E,The number of times the video has been viewed
+video_statistics_likeCount,NUMERIQUE,12,E,The number of users who have indicated that they liked the video
+video_statistics_dislikeCount,NUMERIQUE,12,E,The number of users who have indicated that they disliked the video
+video_statistics_favoriteCount,NUMERIQUE,12,E,"This property has been deprecated. The deprecation is effective as of August 28, 2015. The property's value is now always set to 0"
+video_statistics_commentCount,NUMERIQUE,12,E,The number of comments for the video
+,,,,
+video_topicDetails_topicIds,[AN],30,E,"Important: This property has been deprecated as of November 10, 2016. The API no longer returns values for this property, and any topics associated with a video are now returned by the topicDetails.relevantTopicIds[] property value."
+,,,,
+video_fileDetails_durationMs,NUMERIQUE,12,E,The length of the uploaded video in milliseconds
+video_fileDetails_bitrateBps,NUMERIQUE,12,E,The uploaded video file's combined (video and audio) bitrate in bits per second
+video_fileDetails_creationTime,AN,25,E,The date and time when the uploaded video file was created.
+,,,,
+video_localizations_key_title,AN,30,E,The localized by the (key) video title
+video_localizations_key_description,AN,160,E,The localized by the (key) video description.
+,,,,
+,,,,
+commentthread_kind,youtube#commentThread,22,E,Identifies the API resource's type. The value will be youtube#commentThread
+commentthread_etag,etag,41,E,The Etag of this resource
+commentthread_id,AN,30,E,The ID that YouTube uses to uniquely identify the comment thread
+,,,,
+commentthread_snippet_channelId,AN,30,E,The YouTube channel that is associated with the comments in the thread
+commentthread_snippet_videoId,AN,30,E,If the comments are about a video then the value identifies The ID of the video that the comments refer to. if the comments refer to the channel itself this property will not have a value
+commentthread_snippet_topLevelComment,comments Resource,,E,The thread's top-level comment. The property's value is a comment
+commentthread_snippet_canReply,boolean,,E,This setting indicates whether the current viewer can reply to the thread
+commentthread_snippet_totalReplyCount,NUMERIQUE,12,E,The total number of replies that have been submitted in response to the top-level comment
+commentthread_snippet_isPublic,boolean,,E,"This setting indicates whether the thread, including all of its comments and comment replies, is visible to all YouTube users."
+,,,,
+commentthread_replies_comments,[comments Resource],,E,A list of one or more replies to the top-level comment
+,,,,
+,,,,
+Comments_kind,youtube#comment,16,E,Identifies the API resource's type. The value will be youtube#comment
+Comments_etag,string,41,E,The Etag of this resource
+Comments_id,AN,30,E,The ID that YouTube uses to uniquely identify the comment
+,,,,
+Comments_snippet_authorDisplayName,AN,30,E,The display name of the user who posted the comment
+Comments_snippet_authorProfileImageUrl,AN,60,E,The URL for the avatar of the user who posted the comment
+Comments_snippet_authorChannelUrl,AN,60,E,"The URL of the comment author's YouTube channel, if available"
+Comments_authorChannelId_value,AN,30,E,"The ID of the comment author's YouTube channel, if available"
+Comments_snippet_channelId,AN,30,E,The YouTube channel that is associated with the comments in the thread
+Comments_snippet_videoId,AN,30,E,If the comments are about a video then the value identifies The ID of the video that the comments refer to. if the comments refer to the channel itself this property will not have a value
+Comments_snippet_textDisplay,AN,30,E,The comment's text. The text can be retrieved in either plain text or HTML
+Comments_snippet_textOriginal,AN,30,E,"The original, raw text of the comment as it was initially posted or last updated. The original text is only returned if it is accessible to the authenticated user, which is only guaranteed if the user is the comment's author."
+Comments_snippet_parentId,AN,30,E,The unique ID of the parent comment. This property is only set if the comment was submitted as a reply to another comment
+Comments_snippet_canRate,boolean,,E,This setting indicates whether the current viewer can rate the comment
+Comments_snippet_viewerRating,AN,20,E,"The rating the viewer has given to this comment. Note that this property does not currently identify dislike ratings, though this behavior is subject to change. In the meantime the values are :=(like, none)"
+Comments_snippet_likeCount,NUMERIQUE,12,E,The total number of likes
+Comments_snippet_moderationStatus,AN,25,E,"The comment's moderation status values := (heldForReview, likelySpam, published, rejected)"
+Comments_snippet_publishedAt,date,,E,The date and time when the comment was orignally published
+Comments_snippet_updatedAt,date,,E,The date and time when the comment was last updated
+,,,,
+,,,,
+channels_kind,youtube#channel,15,E,Identifies the API resource's type. The value will be youtube#channel
+channels_channels_etag,etag,41,E,The Etag of this resource
+channels_id,AN,30,E,The ID that YouTube uses to uniquely identify the channel
+,,,,
+channels_snippet_title,AN,30,E,The channel's title
+channels_snippet_description,AN,1000,E,The channel's description
+channels_snippet_customUrl,AN,40,E,The channel's custom URL
+channels_snippet_publishedAt,date,,E,The date and time that the channel was created
+channels_snippet_defaultLanguage,AN,10,E,The language of the text in the channel resource's snippet.title and snippet.description properties
+channels_snippet_localized_title,AN,50,E,The localized channel title
+channels_snippet_localized_description,AN,300,E,The localized channel description
+channels_snippet_country,AN,29,E,The country with which the channel is associated
+,,,,
+channels_contentDetails_relatedPlaylists_likes,AN,12,E,The ID of the playlist that contains the channel's liked videos
+channels_contentDetails_relatedPlaylists_favorites,AN,12,E,The ID of the playlist that contains the channel's favorite videos
+channels_contentDetails_relatedPlaylists_uploads,AN,12,E,The ID of the playlist that contains the channel's uploaded videos
+channels_contentDetails_relatedPlaylists_watchHistory,AN,12,E,This property has been deprecated. The property's value is always set to HL. The API now returns an empty list in response to requests for playlist details
+channels_contentDetails_relatedPlaylists_watchLater,AN,12,E,This property has been deprecated. The property's value is always set to WL. The API now returns an empty list in response to requests for playlist
+,,,,
+channels_statistics_viewCount,NUMERIQUE,12,E,The number of times the channel has been viewed
+channels_statistics_commentCount,NUMERIQUE,12,E,The number of comments for the channel
+channels_statistics_subscriberCount,NUMERIQUE,12,E,The number of subscribers that the channel has
+channels_statistics_hiddenSubscriberCount,boolean,12,E,Indicates whether the channel's subscriber count is publicly visible
+channels_statistics_videoCount,NUMERIQUE,12,E,The number of videos uploaded to the channel
+,,,,
+channels_topicDetails_topicIds,[AN],20,E,"A list of topic IDs associated with the channel. This property has been deprecated as of November 10, 2016."
+channels_topicDetails_topicCategories,[AN],100,E,A list of Wikipedia URLs that describe the channel's content
+,,,,
+channels_status_privacyStatus,AN,20,E,"Privacy status of the channel. values := (private, public, unlisted)"
+channels_status_isLinked,boolean,1,E,Indicates whether the channel data identifies a user that is already linked to either a YouTube username or a Google+ account.
+channels_status_longUploadsStatus,AN,20,E,"Indicates whether the channel is eligible to upload videos that are more than 15 minutes long. This property is only returned if the channel owner authorized the API request, values := (allowed, disallowed, eligible)"
+,,,,
+channels_brandingSettings_channel_title,AN,30,E,The channel's title. The title has a maximum length of 30 characters
+channels_brandingSettings_channel_description,AN,1000,E,"The channel description, which appears in the channel information box on your channel page"
+channels_brandingSettings_channel_keywords,AN,100,E,Keywords associated with your channel. The value is a space-separated list of strings
+channels_brandingSettings_channel_moderateComments,boolean,1,E,This setting determines whether user-submitted comments left on the channel page need to be approved by the channel owner to be publicly visible. The default value is false.
+channels_brandingSettings_channel_showRelatedChannels,boolean,1,E,This setting indicates whether YouTube should show an algorithmically generated list of related channels on your channel page
+channels_brandingSettings_channel_showBrowseView,boolean,1,E,"This setting indicates whether the channel page should display content in a browse or feed view. For example, the browse view might display separate sections for uploaded videos, playlists, and liked videos. The feed view, on the other hand, displays the channel's activity feed."
+channels_brandingSettings_channel_featuredChannelsTitle,AN,30,E,The title that displays above the featured channels module.
+channels_brandingSettings_channel_unsubscribedTrailer,AN,30,E,The video that should play in the featured video module in the channel page's browse view for unsubscribed viewers. 
+channels_brandingSettings_channel_profileColor,AN,15,E,A prominent color that complements the channel's content
+channels_brandingSettings_channel_defaultLanguage,AN,25,E,The language of the text in the channel resource's snippet.title and snippet.description properties.
+channels_brandingSettings_channel_country,AN,30,E,The country with which the channel is associated
+channels_contentOwnerDetails_contentOwner,AN,30,E,The ID of the content owner linked to the channel
+channels_contentOwnerDetails_timeLinked,date,,E,The date and time of when the channel was linked to the content owner
+,,,,
+channels_localizations_key_title,AN,30,E,The localized by the (key) channel title
+channels_localizations_key_description,AN,160,E,The localized by the (key) channel description.
