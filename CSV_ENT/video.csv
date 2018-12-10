@@ -27,5 +27,5 @@
 "video_fileDetails_durationMs", "unsigned long"
 "video_fileDetails_bitrateBps", "unsigned long"
 "video_fileDetails_creationTime", "string"
-"video_localizations_key_title", "string",
+"video_localizations_key_title", "string"
 "video_localizations_key_description", "string"
