@@ -9,6 +9,7 @@ import com.google.api.client.http.HttpTransport;
 import com.google.api.client.json.jackson2.JacksonFactory;
 import com.google.api.client.json.JsonFactory;
 import com.google.api.client.util.store.FileDataStoreFactory;
+import com.google.api.client.util.DateTime;//For setPublishedBefore/From(DateTime x)
 
 import com.google.api.services.youtube.YouTubeScopes;
 import com.google.api.services.youtube.model.*;
@@ -18,40 +19,40 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.Arrays;
+import java.util.Collection;//search video.list
+import java.util.Date;
+import java.util.HashMap;   //search video.list
 import java.util.List;
 
 
 public class Quickstart {
 
     /** Application name. */
-    private static final String APPLICATION_NAME = "API Sample";
+    private static final String APPLICATION_NAME = "YOUTUBE API";
 
-    /** Directory to store user credentials for this application. */
+    /** Directory to store user credentials for get channel  application. */
     private static final java.io.File DATA_STORE_DIR = new java.io.File(
-        System.getProperty("user.home"), ".credentials/youtube-java-quickstart");
-
-    /** Global instance of the {@link FileDataStoreFactory}. */
-    private static FileDataStoreFactory DATA_STORE_FACTORY;
+        System.getProperty("user.home"), ".credentials/youtube-api");
 
     /** Global instance of the JSON factory. */
-    private static final JsonFactory JSON_FACTORY =
-        JacksonFactory.getDefaultInstance();
-
-    /** Global instance of the HTTP transport. */
-    private static HttpTransport HTTP_TRANSPORT;
+    private static final JsonFactory JSON_FACTORY = JacksonFactory.getDefaultInstance();
 
     /** Global instance of the scopes required by this quickstart.
-     *
-     * If modifying these scopes, delete your previously saved credentials
-     * at ~/.credentials/drive-java-quickstart
-     */
-    private static final List<String> SCOPES =
-        Arrays.asList(YouTubeScopes.YOUTUBE_READONLY);
+    */
+    private static final List<String> SCOPES = Arrays.asList(YouTubeScopes.YOUTUBE_READONLY);
 
+    
+    //Youtube Object Where all the magic comes from
+    private static YouTube youtube;
+
+    /** Global instance of the HTTP transport. */
+    private static HttpTransport HTTP_TRANSPORT;        
+    /** Global instance of the {@link FileDataStoreFactory}. */
+    private static FileDataStoreFactory DATA_STORE_FACTORY;
     static {
         try {
             HTTP_TRANSPORT = GoogleNetHttpTransport.newTrustedTransport();
-            DATA_STORE_FACTORY = new FileDataStoreFactory(DATA_STORE_DIR);
+            DATA_STORE_FACTORY   = new FileDataStoreFactory(DATA_STORE_DIR);
         } catch (Throwable t) {
             t.printStackTrace();
             System.exit(1);
@@ -72,13 +73,12 @@ public class Quickstart {
 
         // Build flow and trigger user authorization request.
         GoogleAuthorizationCodeFlow flow =
-                new GoogleAuthorizationCodeFlow.Builder(
-                        HTTP_TRANSPORT, JSON_FACTORY, clientSecrets, SCOPES)
-                .setDataStoreFactory(DATA_STORE_FACTORY)
-                .setAccessType("offline")
-                .build();
-        Credential credential = new AuthorizationCodeInstalledApp(
-            flow, new LocalServerReceiver()).authorize("user");
+            new GoogleAuthorizationCodeFlow.Builder(HTTP_TRANSPORT, JSON_FACTORY, clientSecrets, SCOPES)
+            .setDataStoreFactory(DATA_STORE_FACTORY)
+            .setAccessType("offline")
+            .build();
+        Credential credential = new AuthorizationCodeInstalledApp(flow, new LocalServerReceiver()).authorize("user");
+//        System.out.println("Credentials saved to " + DATA_STORE_DIR.getAbsolutePath());
         return credential;
     }
 
@@ -96,18 +96,14 @@ public class Quickstart {
     }
 
     public static void main(String[] args) throws IOException {
-        YouTube youtube = getYouTubeService();
         try {
-            YouTube.Channels.List channelsListByUsernameRequest = youtube.channels().list("snippet,contentDetails,statistics");
-            channelsListByUsernameRequest.setForUsername("GoogleDevelopers");
-
-            ChannelListResponse response = channelsListByUsernameRequest.execute();
-            Channel channel = response.getItems().get(0);
-            System.out.printf(
-                "This channel's ID is %s. Its title is '%s', and it has %s views.\n",
-                channel.getId(),
-                channel.getSnippet().getTitle(),
-                channel.getStatistics().getViewCount());
+            youtube = getYouTubeService();
+            SearchListResponse videos = getVideosByQuery("hello"
+                                                    , new Date(/*year*/ 2018-1900,/*month*/ 10 + 1,/*Day*/ 12)
+                                                    , new Date(/*year*/ 2018-1900,/*month*/ 11 + 1 ,/*Day*/ 12)
+                                                    );
+            System.out.println("Number of returned videos : " + videos.getItems().size());
+            System.out.println(videos);
         } catch (GoogleJsonResponseException e) {
             e.printStackTrace();
             System.err.println("There was a service error: " +
@@ -116,5 +112,25 @@ public class Quickstart {
             t.printStackTrace();
         }
     }
+
+
+    /**Return a list of videos, searched for with the given query, and between the from - to dates  
+     * The list is in "published date" order 
+    */
+    private static SearchListResponse getVideosByQuery(String query, Date dateFrom, Date dateTo)
+    throws Throwable
+    {
+            YouTube.Search.List searchListByKeywordRequest = youtube.search().list("snippet");
+            //to change (it s set to 5 by default)
+            searchListByKeywordRequest.setMaxResults(Long.parseLong("1"));
+            searchListByKeywordRequest.setType("video");
+            if (query != "")    searchListByKeywordRequest.setQ(query);
+            searchListByKeywordRequest.setPublishedAfter(new DateTime(dateFrom));
+            searchListByKeywordRequest.setPublishedBefore(new DateTime(dateTo ));
+            // Possible Values (date, reting , relevance, title, videoCount, viewCount)
+            searchListByKeywordRequest.setOrder("date");//"relevance" by default.
+
+            return searchListByKeywordRequest.execute();  
+    }      
 }
 
