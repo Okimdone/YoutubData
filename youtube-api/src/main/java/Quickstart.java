@@ -18,6 +18,7 @@ import com.google.api.services.youtube.YouTube;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;//search video.list
 import java.util.Date;
@@ -95,42 +96,82 @@ public class Quickstart {
                 .build();
     }
 
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) {
         try {
             youtube = getYouTubeService();
-            SearchListResponse videos = getVideosByQuery("hello"
+            List<SearchResult> items = getVideosByQuery("hello"
                                                     , new Date(/*year*/ 2018-1900,/*month*/ 10 + 1,/*Day*/ 12)
                                                     , new Date(/*year*/ 2018-1900,/*month*/ 11 + 1 ,/*Day*/ 12)
                                                     );
-            System.out.println("Number of returned videos : " + videos.getItems().size());
-            System.out.println(videos);
+            
+            if(items != null){
+                String videoIds = null;
+                // Retrun a list of channel informations
+                List<Channel> channelItems = new ArrayList<>();   
+                
+                // Collectusefull information in the searched items (videoIds and channelIds)
+                for(SearchResult item : items){
+                    if(videoIds == null){
+                        videoIds = item.getId().getVideoId();
+                    } else {
+                        videoIds += "," + item.getId().getVideoId();
+                    }
+                    channelItems.add(getChannelItem(item.getSnippet().getChannelId()));
+                }
+                /* Get the found videos s informations*/
+                System.out.println(getVideoItems(videoIds));
+                /* Get the found Channels s informations*/
+                System.out.println(channelItems);
+
+                /*System.out.println();
+                System.out.println(getChannelItem(channelIds));
+                */
+            }
         } catch (GoogleJsonResponseException e) {
             e.printStackTrace();
             System.err.println("There was a service error: " +
                 e.getDetails().getCode() + " : " + e.getDetails().getMessage());
+        } catch (IOException e) {
+            System.err.println("IOException: " + e.getMessage());
+            e.printStackTrace();
         } catch (Throwable t) {
             t.printStackTrace();
         }
     }
 
 
-    /**Return a list of videos, searched for with the given query, and between the from - to dates  
-     * The list is in "published date" order 
+    /** Return a list of videos, searched for with the given query, and between the from - to dates  
+     *  The list is in "published date" order 
     */
-    private static SearchListResponse getVideosByQuery(String query, Date dateFrom, Date dateTo)
-    throws Throwable
+    private static List<SearchResult> getVideosByQuery(String query, Date dateFrom, Date dateTo)
+    throws IOException
     {
-            YouTube.Search.List searchListByKeywordRequest = youtube.search().list("snippet");
+            YouTube.Search.List searchListByKeywordRequest = youtube.search().list("id,snippet");
             //to change (it s set to 5 by default)
-            searchListByKeywordRequest.setMaxResults(Long.parseLong("1"));
+            searchListByKeywordRequest.setMaxResults(Long.parseLong("2"));
             searchListByKeywordRequest.setType("video");
             if (query != "")    searchListByKeywordRequest.setQ(query);
             searchListByKeywordRequest.setPublishedAfter(new DateTime(dateFrom));
             searchListByKeywordRequest.setPublishedBefore(new DateTime(dateTo ));
-            // Possible Values (date, reting , relevance, title, videoCount, viewCount)
+            // Possible Values (date, rating , relevance, title, videoCount, viewCount)
             searchListByKeywordRequest.setOrder("date");//"relevance" by default.
 
-            return searchListByKeywordRequest.execute();  
+            return (searchListByKeywordRequest.execute().getItems());  
     }      
-}
 
+    /** Takes a list of ids as a comma separated ids values and return an array of video*/
+    private static List<Video> getVideoItems(String videoIds) 
+    throws IOException {
+        YouTube.Videos.List videosListMultipleIdsRequest = youtube.videos().list("snippet,contentDetails,statistics");
+        if (videoIds != "") videosListMultipleIdsRequest.setId(videoIds);
+        return videosListMultipleIdsRequest.execute().getItems();
+    }
+    
+    
+    public static Channel getChannelItem(String channelId) 
+    throws IOException {
+        YouTube.Channels.List channelsListByIdRequest = youtube.channels().list("snippet,contentDetails,statistics");
+        if ( channelId != "") channelsListByIdRequest.setId(channelId);
+        return channelsListByIdRequest.execute().getItems().get(0);
+    }
+}
