@@ -13,6 +13,7 @@ import com.google.api.client.util.DateTime;//For setPublishedBefore/From(DateTim
 
 import com.google.api.services.youtube.YouTubeScopes;
 import com.google.api.services.youtube.model.*;
+import com.sun.source.doctree.CommentTree;
 import com.google.api.services.youtube.YouTube;
 
 import java.io.IOException;
@@ -40,8 +41,10 @@ public class Quickstart {
 
     /** Global instance of the scopes required by this quickstart.
     */
-    private static final List<String> SCOPES = Arrays.asList(YouTubeScopes.YOUTUBE_READONLY);
-
+    private static final List<String> SCOPES = Arrays.asList(YouTubeScopes.YOUTUBE_READONLY
+                                                            ,"https://www.googleapis.com/auth/youtube"
+                                                            ,"https://www.googleapis.com/auth/youtube.force-ssl"
+                                                            );
     
     //Youtube Object Where all the magic comes from
     private static YouTube youtube;
@@ -79,7 +82,7 @@ public class Quickstart {
             .setAccessType("offline")
             .build();
         Credential credential = new AuthorizationCodeInstalledApp(flow, new LocalServerReceiver()).authorize("user");
-//        System.out.println("Credentials saved to " + DATA_STORE_DIR.getAbsolutePath());
+        //System.out.println("Credentials saved to " + DATA_STORE_DIR.getAbsolutePath());
         return credential;
     }
 
@@ -103,11 +106,14 @@ public class Quickstart {
                                                     , new Date(/*year*/ 2018-1900,/*month*/ 10 + 1,/*Day*/ 12)
                                                     , new Date(/*year*/ 2018-1900,/*month*/ 11 + 1 ,/*Day*/ 12)
                                                     );
-            
             if(items != null){
                 String videoIds = null;
-                // Retrun a list of channel informations
-                List<Channel> channelItems = new ArrayList<>();   
+                // A list of videos informations
+                List<Video> videoItems = new ArrayList<>();
+                // A list of channels informations that own the videoItems
+                List<Channel> channelItems = new ArrayList<>(); 
+                // A list of CommentThreads informations for everyvideo in the videoItems
+                List<CommentThread> commentThreadItems = new ArrayList<>();
                 
                 // Collectusefull information in the searched items (videoIds and channelIds)
                 for(SearchResult item : items){
@@ -117,14 +123,31 @@ public class Quickstart {
                         videoIds += "," + item.getId().getVideoId();
                     }
                     channelItems.add(getChannelItem(item.getSnippet().getChannelId()));
-                }
-                /* Get the found videos s informations*/
-                System.out.println(getVideoItems(videoIds));
-                /* Get the found Channels s informations*/
-                System.out.println(channelItems);
+                    try {
+                        List<CommentThread> cTs = getCommentThreadsByVId("6r5y4bsVUt8"/*item.getId().getVideoId()*/); 
+                        if(cTs != null){
+                            for(CommentThread cT : cTs){
+                                System.out.println(cT.getSnippet().getTopLevelComment().getSnippet().getTextDisplay());
+                                System.out.println();
+                                System.out.println(cT.getSnippet().getTopLevelComment().getSnippet().getTextOriginal());
+                                System.out.println();
+                                System.out.println();
+                                // the Making of the commentTread List of items
+                                commentThreadItems.add(cT);
+                            }
+                        }
+                    } catch (GoogleJsonResponseException e){
 
+                    }
+                }videoItems = getVideoItems(videoIds);
+                for(Video v : videoItems){
+                    System.out.println( "Title : " + v.getSnippet().getLocalized().getTitle() + "\nChannel :  " +
+                                        v.getSnippet().getChannelTitle() + "\n\n"
+                                        );
+                    //System.out.println(channelItems);
+                } 
                 /*System.out.println();
-                System.out.println(getChannelItem(channelIds));
+                System.out.println(getChannelItem(commentThreadItems.toString()));
                 */
             }
         } catch (GoogleJsonResponseException e) {
@@ -148,7 +171,7 @@ public class Quickstart {
     {
             YouTube.Search.List searchListByKeywordRequest = youtube.search().list("id,snippet");
             //to change (it s set to 5 by default)
-            searchListByKeywordRequest.setMaxResults(Long.parseLong("2"));
+            searchListByKeywordRequest.setMaxResults(Long.parseLong("1"));
             searchListByKeywordRequest.setType("video");
             if (query != "")    searchListByKeywordRequest.setQ(query);
             searchListByKeywordRequest.setPublishedAfter(new DateTime(dateFrom));
@@ -167,11 +190,19 @@ public class Quickstart {
         return videosListMultipleIdsRequest.execute().getItems();
     }
     
-    
-    public static Channel getChannelItem(String channelId) 
+    /** Takes one channel id, and returns its equivalent informations */
+    private static Channel getChannelItem(String channelId) 
     throws IOException {
         YouTube.Channels.List channelsListByIdRequest = youtube.channels().list("snippet,contentDetails,statistics");
         if ( channelId != "") channelsListByIdRequest.setId(channelId);
         return channelsListByIdRequest.execute().getItems().get(0);
+    }
+
+    /** Get the commentthreads by the given video Id */
+    private static List<CommentThread> getCommentThreadsByVId(String videoId) 
+    throws IOException {
+        YouTube.CommentThreads.List commentThreadsListByVideoIdRequest = youtube.commentThreads().list("snippet,replies");
+        if (videoId != "")  commentThreadsListByVideoIdRequest.setVideoId(videoId);
+        return commentThreadsListByVideoIdRequest.execute().getItems();
     }
 }
