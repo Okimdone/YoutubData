@@ -1,9 +1,9 @@
 import java.sql.*; 
 import java.util.*; 
 public class insert {
-	static	String url = "jdbc:oracle:thin:@localhost:1521:xe"; 
-	static String user = "system"; 
-	static	String pass = "abdo1234"; 
+	static final 	String url = "jdbc:oracle:thin:@localhost:1521:xe"; 
+	static final String user = "system"; 
+	static	final String pass = "abdo1234"; 
 
 	public void query(int  Id_query,String mot,String date_from,String date_to ){
 		String sql = "insert into  query values("+Id_query+",'"+mot+"','"+date_from+"','"+date_to+"')"; 
