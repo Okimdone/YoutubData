@@ -1,5 +1,6 @@
 # Table: Query
  Query(__query_id__, mots)
+ 
  Query_plage(__Query_plage_id__, #query_id, date_from , date_to)
 
 # Table: Channel
