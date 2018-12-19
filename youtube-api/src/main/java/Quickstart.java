@@ -26,6 +26,7 @@ import java.util.Collection;//search video.list
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Scanner;
 
 
 public class Quickstart {
@@ -112,8 +113,11 @@ public class Quickstart {
             // Youtube s magic
             youtube = getYouTubeService();
             
+            Scanner in = new Scanner(System.in);
+            System.out.print("Enter the Query : ");
+            String query = in.nextLine();
             // Search for <query>
-            List<SearchResult> items = getVideosByQuery("                                                                                                                                                                                                                                                                                                                                                           hello"
+            List<SearchResult> items = getVideosByQuery(query
                                                     , new Date(/*year*/ 2018-1900,/*month*/ 11 - 1,/*Day*/ 12)
                                                     , new Date(/*year*/ 2018-1900,/*month*/ 12 - 1 ,/*Day*/ 12)
                                                     );
