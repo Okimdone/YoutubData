@@ -72,4 +72,4 @@ comments_id  varchar(12),
 comments_id_Parent varchar(12) );  
 
 alter table Comments_reponse add constraint fk_comment_rep  foreign key comments_id references comments(comments_id);
-
+alter table Comments_reponse add constraint fk_id_Parent foreign key comments_id_Parent references comments(comments_id);
