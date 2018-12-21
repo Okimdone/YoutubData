@@ -1,9 +1,6 @@
 Nom de la donnée,Format,Longueur,Type,Description
 id_query,NUMERIQUE,10,E,"defines the id of a groupe of key words searched in the other of the ""id_mot"""
-id_mot,NUMERIQUE,10,E,"defines the order of the word searched in a group of a searched sentence ""query"""
 mot,AN,20,E,a text word delimited by spaces in a query 
-,,,,
-id_palge,,,,"id of a ""plage de date"""
 date_from,DATE,,E,date to search from
 date_to,DATE,,E,date to search to
 ,,,,
