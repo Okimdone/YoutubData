@@ -4,10 +4,10 @@
  Query_plage(__Query_plage_id__, #query_id, date_from , date_to)
 
 # Table: Channel
- Channel( __channels_id__, title , description, customUrl , publishedAt, defaultLanguage, country, viewCount, commentCount, subscriberCount, videoCount)
+ Channel( __channels_id__, title , description, customUrl , publishedAt, viewCount, commentCount, subscriberCount, videoCount)
 
 # Table: Video
- Video( __video_id__, publishedAt, title, description, defaultLanguage, defaultAudioLanguage, viewCount, likeCount, dislikeCount, commentCount, durationMs, creationTime, #channels_id)
+ Video( __video_id__, publishedAt, title, description, defaultLanguage, defaultAudioLanguage, viewCount, likeCount, dislikeCount, commentCount, #channels_id)
 
 # Table: Trouver
  Trouver(**#video_id ,#Query_plage_id** )
