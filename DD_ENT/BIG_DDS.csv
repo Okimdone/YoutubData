@@ -26,14 +26,14 @@ Comments_snippet_likeCount,NUMERIQUE,12,E,The total number of likes
 Comments_snippet_publishedAt,date,,E,The date and time when the comment was orignally published
 Comments_snippet_updatedAt,date,,E,The date and time when the comment was last updated
 
-channels_id,AN,30,E,The ID that YouTube uses to uniquely identify the channel
-channels_snippet_title,AN,30,E,The channel's title
-channels_snippet_description,AN,1000,E,The channel's description
-channels_snippet_customUrl,AN,40,E,The channel's custom URL
-channels_snippet_publishedAt,date,,E,The date and time that the channel was created
-channels_snippet_defaultLanguage,AN,10,E,The language of the text in the channel resource's snippet.title and snippet.description properties
-channels_snippet_country,AN,29,E,The country with which the channel is associated
-channels_statistics_viewCount,NUMERIQUE,12,E,The number of times the channel has been viewed
-channels_statistics_commentCount,NUMERIQUE,12,E,The number of comments for the channel
-channels_statistics_subscriberCount,NUMERIQUE,12,E,The number of subscribers that the channel has ; NULL
-channels_statistics_videoCount,NUMERIQUE,12,E,The number of videos uploaded to the channel
+channel_id,AN,30,E,The ID that YouTube uses to uniquely identify the channel
+channel_snippet_title,AN,30,E,The channel's title
+channel_snippet_description,AN,1000,E,The channel's description
+channel_snippet_customUrl,AN,40,E,The channel's custom URL
+channel_snippet_publishedAt,date,,E,The date and time that the channel was created
+channel_snippet_defaultLanguage,AN,10,E,The language of the text in the channel resource's snippet.title and snippet.description properties
+channel_snippet_country,AN,29,E,The country with which the channel is associated
+channel_statistics_viewCount,NUMERIQUE,12,E,The number of times the channel has been viewed
+channel_statistics_commentCount,NUMERIQUE,12,E,The number of comments for the channel
+channel_statistics_subscriberCount,NUMERIQUE,12,E,The number of subscribers that the channel has ; NULL
+channel_statistics_videoCount,NUMERIQUE,12,E,The number of videos uploaded to the channel
