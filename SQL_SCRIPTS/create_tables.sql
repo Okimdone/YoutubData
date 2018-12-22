@@ -16,8 +16,6 @@ CREATE TABLE Channel
 ,   description VARCHAR2(4000) CONSTRAINT ch_dscr_NN NOT NULL
 ,   customUrl  VARCHAR2(40)  CONSTRAINT ch_curl_NN NOT NULL
 ,   publishedAt DATE         CONSTRAINT ch_pat_NN NOT NULL
-,   defaultLanguage VARCHAR2(10) CONSTRAINT ch_dl_NN NOT NULL
-,   country VARCHAR2(29)     CONSTRAINT ch_ctr_NN NOT NULL
 ,   viewCount NUMERIC(12)    CONSTRAINT ch_vc_NN NOT NULL
 ,   commentCount NUMERIC(12)    DEFAULT NULL
 ,   subscriberCount NUMERIC(12) DEFAULT NULL
@@ -35,8 +33,6 @@ CREATE TABLE Video
 ,   likeCount  NUMERIC(12) DEFAULT NULL
 ,   dislikeCount  NUMERIC(12) DEFAULT NULL
 ,   commentCount  NUMERIC(12) DEFAULT NULL
-,   durationMs  NUMERIC(12) CONSTRAINT v_dms_NN NOT NULL
-,   creationTime  VARCHAR2(25) CONSTRAINT v_ct_NN NOT NULL
 ,   channel_id VARCHAR2(11)
 ,       CONSTRAINT v_ch_id_FK FOREIGN KEY (channel_id) REFERENCES channel(channel_id) ON DELETE CASCADE
 ,       CONSTRAINT v_vld_CK CHECK ( likeCount + dislikeCount < viewCount)
