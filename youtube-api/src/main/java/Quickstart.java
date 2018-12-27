@@ -1,5 +1,7 @@
 package src.main.java;
 
+import src.jdbc.OracleSql;
+
 import com.google.api.client.googleapis.json.GoogleJsonResponseException;
 import com.google.api.client.util.ArrayMap;
 
@@ -15,6 +17,8 @@ import static src.main.java.YouItems.*;
 
 public class Quickstart {
 
+    static OracleSql sqlConnection = OracleSql.getOracleSql();
+
     /** Main program, searches for a (query + date interval) return (videoid, channelid) as a tuple
      *  loops throught each videoId and gets and stores the found information into the List<Video> videoItems
      *  searches for the channelIds and stores the found infomation in the List<Channel> channelItems
@@ -29,11 +33,16 @@ public class Quickstart {
             System.out.print("Enter the Query : ");
             String query = in.nextLine();
             // Search for <query>
+            Date dFrom = new Date(/*year*/ 2018-1900,/*month*/ 11 - 1,/*Day*/ 12);
+            Date dTo   = new Date(/*year*/ 2018-1900,/*month*/ 12 - 1 ,/*Day*/ 12);
             List<SearchResult> items = getVideosByQuery(query
-                                                    , new Date(/*year*/ 2018-1900,/*month*/ 11 - 1,/*Day*/ 12)
-                                                    , new Date(/*year*/ 2018-1900,/*month*/ 12 - 1 ,/*Day*/ 12)
+                                                    , dFrom
+                                                    , dTo
                                                     );
-System.out.println(" QUERY ITEM : " + query + ", DATE" +", DATE" );
+
+            sqlConnection.insert(query, dFrom, dTo);
+
+System.out.println(" QUERY ITEM : " + query + ", DATEfrom : "+ dFrom +", DATEto" + dTo );
 System.out.println("###############################################################\n");
             if(items != null){
 
@@ -84,8 +93,8 @@ System.out.println("############################################################
                             }
                         }
                     } catch (GoogleJsonResponseException e){}
-                    
-System.out.println("\n\n\n*********************************************************************************************\n");
+sqlConnection.insert(videoItem, channelItems, commentThreadItems, commentItems);                    
+/*System.out.println("\n\n\n*********************************************************************************************\n");
 if (videoItem != null ){
     System.out.println("VIDEO : \nId : "  + videoItem.getId());
     System.out.println("publishedAt : " + videoItem.getSnippet().getPublishedAt() );
@@ -154,8 +163,9 @@ if (commentItems != null ) for (Comment comment : commentItems){
     System.out.println("parent id  : "  + comment.getSnippet().getParentId());
 
     System.out.println("\n");
-}commentItems.clear();
-                }   
+}commentItems.clear();*/
+                }//for
+                in.nextLine();
             }
         } catch (GoogleJsonResponseException e) {
             e.printStackTrace();
