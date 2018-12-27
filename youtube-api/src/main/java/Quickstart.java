@@ -164,6 +164,10 @@ if (commentItems != null ) for (Comment comment : commentItems){
 
     System.out.println("\n");
 }commentItems.clear();*/
+    videoItem = null;
+    channelItems.clear();
+    commentThreadItems.clear();
+    commentItems.clear();
                 }//for
                 in.nextLine();
             }
