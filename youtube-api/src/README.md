@@ -10,5 +10,10 @@
 #main/
 
   Contains 2 sub-directories :
-    * java/     : Where the main youtube programs are stored for making an Oauth connection and fetching the date from youtube (our main program is called Quickstart[.java] 
-    * resources/:  Where the client_secret must be stored with the name "client_secret.json"
+    1. java/     :   
+          
+          Where the main youtube programs are stored for making an Oauth connection and fetching the date from youtube (our main program is called Quickstart[.java] 
+    
+    2. resources/:   
+    
+        Where the client_secret must be stored with the name "client_secret.json"
